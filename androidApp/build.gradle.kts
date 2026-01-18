@@ -1,5 +1,4 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-import org.jetbrains.kotlin.gradle.internal.builtins.StandardNames.FqNames.target
 
 plugins {
     alias(libs.plugins.kotlinAndroid)
@@ -13,6 +12,11 @@ kotlin {
         compilerOptions {
             jvmTarget.set(JvmTarget.JVM_11)
         }
+    }
+    dependencies {
+        implementation(projects.composeApp)
+        implementation(libs.androidx.activity.compose)
+        implementation(compose.components.uiToolingPreview)
     }
 }
 
