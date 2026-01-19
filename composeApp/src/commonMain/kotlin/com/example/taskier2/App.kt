@@ -15,6 +15,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import org.jetbrains.compose.resources.painterResource
+import org.koin.compose.koinInject
+import screens.main.MainScreen
+import screens.main.MainViewModel
 
 import taskier2.composeapp.generated.resources.Res
 import taskier2.composeapp.generated.resources.compose_multiplatform
@@ -23,6 +26,7 @@ import taskier2.composeapp.generated.resources.compose_multiplatform
 @Preview
 fun App() {
     MaterialTheme {
+        val mainViewModel = koinInject<MainViewModel>()
         var showContent by remember { mutableStateOf(false) }
         Column(
             modifier = Modifier
@@ -44,6 +48,8 @@ fun App() {
                     Text("Compose: $greeting")
                 }
             }
+            MainScreen(mainViewModel)
         }
+
     }
 }
